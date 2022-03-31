@@ -25,10 +25,10 @@ jobs:
           go-version: 1.17
 
 
-      - name: Format
+      - name: Go Version & Format
         run: |
           go version
-          go format
+          go fmt
 
       - name: Build binary for ${{ matrix.operating-system }}
         run: make ${{ matrix.operating-system }}
