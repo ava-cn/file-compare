@@ -24,3 +24,13 @@ chmod +x file-compare # 添加可执行权限
 cp file-compare /usr/local/bin/.
 ```
 
+
+## 编译
+
+```bash
+# Mac Intel 平台
+GOOS=darwin GOARCH=amd64 go build -v -a -o release/macos/amd64/file-compare
+
+# Mac M1 平台
+GOOS=darwin GOARCH=arm64 go build -v -a -o release/macos/arm64/file-compare
+```
