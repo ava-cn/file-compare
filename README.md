@@ -7,7 +7,7 @@
 在命令行执行 `file-compare` 命令，参数跟需要对比的文件地址。
 
 ```bash
-file-compare https://www.baidu.com https://www.taobao.com
+file-compare https://www.avatrade-apac.cn/assets/css/app.css?id=b964ae60769f0adb3d84 https://avatrade-static.avfpro.cn/assets/css/app.css?id=b964ae60769f0adb3d84
 ```
 
 ## 安装

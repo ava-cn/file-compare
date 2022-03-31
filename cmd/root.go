@@ -3,9 +3,11 @@ package cmd
 import (
 	"crypto/md5"
 	"fmt"
+	"github.com/jedib0t/go-pretty/v6/table"
 	"github.com/spf13/cobra"
 	"os"
 	"time"
+	"unicode/utf8"
 )
 
 var rootCmd = &cobra.Command{
@@ -21,18 +23,33 @@ var rootCmd = &cobra.Command{
 	},
 	Run: func(cmd *cobra.Command, args []string) {
 		var (
-			duration time.Duration
-			body     []byte
-			err      error
+			duration  time.Duration
+			body      []byte
+			size      string
+			md5_value string
+			// t        table.Table
+			err error
 		)
-		for _, url := range args {
+
+		t := table.NewWriter()
+		t.AppendHeader(table.Row{"#", "MD5", "请求耗时", "文件大小", "请求地址"})
+
+		for index, url := range args {
 			if duration, body, err = get(url); err != nil {
 				fmt.Println(err)
 				os.Exit(1)
 			}
 
-			fmt.Printf("%v %x\n", duration, md5.Sum(body))
+			md5_value = fmt.Sprintf("%x", md5.Sum(body))
+			size = ByteCountDecimal(utf8.RuneCountInString(string(body)))
+
+			t.AppendRows([]table.Row{
+				{index, md5_value, duration, size, url},
+			})
+
+			// fmt.Printf("请求时间：%v 文件大小：%v 文件MD5：%x\n", duration, ByteCountDecimal(utf8.RuneCountInString(string(body))), md5.Sum(body))
 		}
+		fmt.Println(t.Render())
 	},
 }
 
