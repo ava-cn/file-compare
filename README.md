@@ -14,6 +14,9 @@ file-compare https://www.baidu.com https://www.taobao.com
 
 下载二进制文件 `file-compare` ，并添加到电脑的 `$PATH` 目录下。
 
+[Mac with Intel Chip](https://github.com/ava-cn/file-compare/raw/master/release/macos/amd64/file-compare)
+[Mac with Apple Chip](https://github.com/ava-cn/file-compare/raw/master/release/macos/arm64/file-compare)
+
 比如一般会放在 `/usr/local/bin/` 目录下。
 
 ```bash
