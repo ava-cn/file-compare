@@ -4,7 +4,7 @@ build_windows_amd64: # Windows Support
 	GOOS=windows GOARCH=amd64 go build -v -a -o release/windows/amd64/file-compare.exe
 
 build_macos_amd64: # Apple Intel Support
-    GOOS=darwin GOARCH=amd64 go build -v -a -o release/macos/arm64/file-compare
+    GOOS=darwin GOARCH=amd64 go build -v -a -o release/macos/amd64/file-compare
 
 build_macos_arm64: # Apple Silicon Support
 	GOOS=darwin GOARCH=arm64 go build -v -a -o release/macos/arm64/file-compare
